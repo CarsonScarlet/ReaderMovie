@@ -1,0 +1,24 @@
+
+<import src="post-item/post-item-template.wxml" />
+<view class="">
+  <!-- catchtap可以阻止冒泡，而bindtap不会组织冒泡 -->
+  <swiper catchtap="onSwiperTap"  indicator-dots="true" autoplay="true" interval="5000">
+    <swiper-item>
+      <image src="/images/3.jpg" data-postId="3"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/1.jpg" data-postId="4"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/2.jpg" data-postId="5"></image>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{postList}}" wx:fot-item="item">
+  <!--template  --> 
+    <!-- is="模板名" -->
+    <!--自定义属性必须是data-属性名，data-固定前缀  -->
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+       <template is="postItem" data="{{...item}}" />
+    </view>   
+  </block> 
+</view>
